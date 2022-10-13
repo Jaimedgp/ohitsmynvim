@@ -48,7 +48,12 @@ nmap <Leader>r :NERDTreeFocus<cr>R<c-w><c-p>
 """""""""""""""""""""""""""""""
 ""  COQ
 """""""""""""""""""""""""""""""
-let g:coc_global_extensions = ['coc-pyright', 'coc-json']
+let g:coc_global_extensions = [
+    \ 'coc-pyright',
+    \ 'coc-json',
+    \ 'coc-vimtex',
+    \ 'coc-emoji',
+    \ ]
 
 
 " GoTo code navigation.

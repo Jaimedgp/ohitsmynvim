@@ -14,7 +14,6 @@
 "
 "                                                                       Jaimedgp    October 1, 2022
 
-
 source $HOME/.config/nvim/plugins/init.vim          " VIM-PLUG CONFIGURATION
 
 source $HOME/.config/nvim/config/options.vim        " GLOBAL NVIM OPTIONS
