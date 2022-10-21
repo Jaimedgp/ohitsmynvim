@@ -14,8 +14,6 @@ autocmd BufRead,BufEnter *.css colorscheme nordisk
 
 " EXTENSION SYNTAX
 autocmd BufEnter *.py source $HOME/.config/nvim/syntax/python.vim
-autocmd BufEnter *.todo source $HOME/.config/nvim/syntax/todo.vim
 
-autocmd BufEnter *.wiki source $HOME/.config/nvim/syntax/readme.vim
 autocmd BufEnter *.tex source $HOME/.config/nvim/syntax/latex.vim
-autocmd BufEnter *.md source $HOME/.config/nvim/syntax/readme.vim
+autocmd BufEnter *.md source $HOME/.config/nvim/syntax/markdown.vim
