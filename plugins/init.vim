@@ -43,9 +43,6 @@ Plug 'godlygeek/tabular'
 Plug 'rrethy/vim-hexokinase', { 'do': 'make hexokinase' }                           " Show colors from hex
 
 "" PYTHON PLUGINS
-Plug 'vim-syntastic/syntastic', {'for': 'python'}                                   " Check your syntax on each save
-Plug 'nvie/vim-flake8', {'for': 'python'}                                           " PEP 8 checking
-Plug 'vim-python/python-syntax', {'for': 'python'}                                  " Syntax highlighting
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 
 "" OTHER LANGUAGES' PLUGINS
@@ -54,6 +51,9 @@ Plug 'lervag/vimtex', {'for': 'tex'}                                            
 Plug 'tmux-plugins/vim-tmux', { 'for': 'tmux' }                                     " Tmux highlight
 
 "" DEPRECATED
+"Plug 'vim-syntastic/syntastic', {'for': 'python'}                                   " Check your syntax on each save
+"Plug 'nvie/vim-flake8', {'for': 'python'}                                           " PEP 8 checking
+"Plug 'vim-python/python-syntax', {'for': 'python'}                                  " Syntax highlighting
 "Plug 'szymonmaszke/vimpyter', {'for': ['ipynb']}                                    " Display notebook using custom syntax
 "Plug 'ap/vim-css-color'
 "Plug 'ctrlpvim/ctrlp.vim'
