@@ -1,0 +1,6 @@
+{
+    "python.linting.ruffEnabled": true,
+    "pyright.testing.provider": "pytest",
+    "pyright.organizeimports.provider": "ruff",
+    "pyright.disableDiagnostics": true
+}
