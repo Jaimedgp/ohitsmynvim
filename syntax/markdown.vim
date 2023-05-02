@@ -34,7 +34,7 @@ let g:vim_markdown_math = 1
 let g:vim_markdown_strikethrough = 1
 let g:vim_markdown_edit_url_in = 'tab'
 
-source $HOME/.config/nvim/scripts/todo.vim
+" source $HOME/.config/nvim/scripts/todo.vim
 
 ":COQsnips compile
 "source $HOME/.config/nvim/scripts/emoji/emoji.vim
