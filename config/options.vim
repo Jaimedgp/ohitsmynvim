@@ -25,8 +25,8 @@ set spelllang=en_gb,es      " Set spell-checker language to EN-UK, ES-ES
 "" CODE FOLDING OPTIONS
 set foldmethod=indent       " Fold based on indention levels.
 set foldnestmax=3           " Only fold up to three nested levels.
-set foldlevel=1             " Just fold up to 2 level
-"set nofoldenable             Disable folding by default.
+set foldlevel=1             " Just fold up to  level
+set nofoldenable             Disable folding by default.
 
 "" RULER NUMERS
 set laststatus=0            " Always display the status bar.
