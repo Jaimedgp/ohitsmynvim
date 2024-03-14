@@ -21,7 +21,9 @@ return {
                     -- "ruff", -- diagnostic
 
                     -- R
-                    -- "r_language_server", -- LSP
+                    "r_language_server", -- LSP
+                    -- "format_r",  -- formatting
+                    -- "styler",  -- formatting
 
                     -- Docker
                     "dockerls", -- LSP
