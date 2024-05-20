@@ -25,6 +25,7 @@ opt.splitbelow = true           -- Horizontal split to the bottom
 opt.ruler = true                -- Always show cursor position.
 opt.cursorline = true           -- Highlight the line currently under cursor
 
+opt.cmdheight = 0
 opt.showmode = false            -- Don't show mode
 opt.conceallevel = 1
 
