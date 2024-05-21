@@ -24,6 +24,7 @@ return {
 			"nvim-telescope/telescope-project.nvim",
 			"cljoly/telescope-repo.nvim",
 			"1riz/telescope-macros.nvim",
+            "jonarrien/telescope-cmdline.nvim",
 			-- "nvim-telescope/telescope-media-files.nvim"
 		},
 		keys = {
@@ -35,6 +36,7 @@ return {
 			{ "<leader>fF", ":Telescope find_files<CR>", mode = "n" },
 			{ "<leader>fc", ":Telescope neoclip<CR>", mode = "n" },
 			{ "<leader>fm", ":Telescope macros<CR>", mode = "n" },
+            { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' },
 		},
 		config = function()
 			require("telescope").setup({
@@ -89,6 +91,19 @@ return {
 							fd_opts = { "--no-ignore-vcs" },
 						},
 					},
+                    cmdline = {
+                        picker = {
+                            layout_config = {
+                            width  = 120,
+                            height = 25,
+                            }
+                        },
+                        mappings    = {
+                            complete      = '<Tab>',
+                            run_selection = '<C-CR>',
+                            run_input     = '<CR>',
+                        },
+                    },
 				},
 			})
 			require("telescope").load_extension("fzf")
