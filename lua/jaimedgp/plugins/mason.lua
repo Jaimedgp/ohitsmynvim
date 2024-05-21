@@ -18,7 +18,11 @@ return {
                     "pyright", -- LSP
                     "black", -- formatting
                     "ruff-lsp", -- LSP
-                    -- "ruff", -- diagnostic
+                    "ruff", -- diagnostic
+                    "isort",
+                    "autopep8",
+                    "mypy",
+                    "pylint",
 
                     -- R
                     "r_language_server", -- LSP
