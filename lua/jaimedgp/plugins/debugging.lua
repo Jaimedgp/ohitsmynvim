@@ -9,6 +9,7 @@ return {
         keys = {
             { "<Leader>db", ":DapToggleBreakpoint<CR>", mode = "n" },
             { "<Leader>dc", ":DapContinue<CR>",         mode = "n" },
+            { "<Leader>ds", ":DapTerminate<CR>",        mode = "n" },
         },
         config = function()
             local dap = require("dap")
