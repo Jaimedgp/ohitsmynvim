@@ -14,14 +14,25 @@ return {
 
             vim.diagnostic.config({
                 virtual_text = {
-                    prefix = '●', -- Could be '■', '▎', 'x'
-                }
+                   prefix = '●', -- Could be '■', '▎', 'x'
+                },
+                update_in_insert = false,
+                underline = false,
+                severity_sort = true,
+                float = {
+                    focusable = false,
+                    style = "minimal",
+                    border = "rounded",
+                    source = "always",
+                    header = "",
+                    prefix = "",
+                },
             })
             local signs = {
-                Error = "■",  -- " ", "⠑"
-                Warn  = "■",  -- " ", "⠺"", "⌬ "
-                Hint  = "■",  -- " ", "⠓"
-                Info  = "■",  -- " ", "⠊"
+                Error = "⠑",  -- " ", "■"
+                Warn  = "⠺",  -- " ", "■"", "⌬ "
+                Hint  = "⠓",  -- " ", "■"
+                Info  = "⠊",  -- " ", "■"
             }
             for type, icon in pairs(signs) do
                 local hl = "DiagnosticSign" .. type
