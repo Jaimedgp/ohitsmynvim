@@ -1,7 +1,7 @@
 return {
     {
         "williamboman/mason-lspconfig.nvim",
-        lazy = true,
+        lazy = false,
         config = function()
             require("mason-lspconfig").setup()
         end,
@@ -9,15 +9,69 @@ return {
     {
         "neovim/nvim-lspconfig",
         lazy = true,
-        config = function()
+        opts = {
+            servers = {
+                ruff_lsp = {
+                    -- default_config = {
+                    --     cmd = { 'ruff-lsp' },
+                    --     filetypes = { 'python' },
+                    --     root_dir = lspconfig.util.find_git_ancestor,
+                    --     init_options = {
+                    --         settings = {
+                    --             args = {}
+                    --         }
+                    --     }
+                    -- }
+                },
+                pyright = {
+                    settings = {
+                        python = {
+                            analysis = {
+                                autoImportCompletions = true,
+                                typeCheckingMode = "on",
+                                autoSearchPaths = true,
+                                useLibraryCodeForTypes = true,
+                                diagnosticMode = "workspace", -- "openFilesOnly",
+                            },
+                        },
+                    },
+                },
+            },
+            setup = {
+                pyright = function(_, _)
+                    local lsp_utils = require "base.lsp.utils"
+                    lsp_utils.on_attach(function(client, bufnr)
+                        local map = function(mode, lhs, rhs, desc)
+                            if desc then
+                                desc = desc
+                            end
+                            vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
+                        end
+                        -- stylua: ignore
+                        if client.name == "pyright" then
+                            map("n", "<leader>lo", "<cmd>PyrightOrganizeImports<cr>",  "Organize Imports" )
+                            map("n", "<leader>lC", function() require("dap-python").test_class() end,  "Debug Class" )
+                            map("n", "<leader>lM", function() require("dap-python").test_method() end,  "Debug Method" )
+                            map("v", "<leader>lE", function() require("dap-python").debug_selection() end, "Debug Selection" )
+                        end
+                    end)
+                end,
+            },
+        },
+        config = function(_, opts)
             local lspconfig = require("lspconfig")
 
             vim.diagnostic.config({
                 virtual_text = {
-                   prefix = '●', -- Could be '■', '▎', 'x'
+                    prefix = '', -- Could be '■', '▎', 'x' '●'
+                    format = function(diagnostic)
+                        -- local lines = vim.split(diagnostic.message, '\n')
+                        -- return lines[1]
+                        return "---"
+                    end,
                 },
                 update_in_insert = false,
-                underline = false,
+                underline = true,
                 severity_sort = true,
                 float = {
                     focusable = false,
@@ -29,36 +83,26 @@ return {
                 },
             })
             local signs = {
-                Error = "⠑",  -- " ", "■"
-                Warn  = "⠺",  -- " ", "■"", "⌬ "
-                Hint  = "⠓",  -- " ", "■"
-                Info  = "⠊",  -- " ", "■"
+                Error = "",  -- " ", "■", "⠑"
+                Warn  = "",  -- " ", "■", "⠺"", "⌬ "
+                Hint  = "",  -- " ", "■", "⠓"
+                Info  = "",  -- " ", "■", "⠊"
             }
+            vim.api.nvim_set_hl(0, "Noice", { fg = "#E74C3C" })
             for type, icon in pairs(signs) do
                 local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "Noice" })
             end
 
             -- Show line diagnostics automatically in hover window
-            -- vim.o.updatetime = 250
-            -- vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
+            vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
             -- Configure `ruff-lsp`.
-            local configs = require 'lspconfig.configs'
-            if not configs.ruff_lsp then
-                configs.ruff_lsp = {
-                    default_config = {
-                        cmd = { 'ruff-lsp' },
-                        filetypes = { 'python' },
-                        root_dir = lspconfig.util.find_git_ancestor,
-                        init_options = {
-                            settings = {
-                                args = {}
-                            }
-                        }
-                    }
-                }
-            end
+            -- local configs = require 'lspconfig.configs'
+            -- if not configs.ruff_lsp then
+            --     configs.ruff_lsp = {
+            --     }
+            -- end
             local on_attach = function(client, bufnr)
                 local bufopts = { noremap=true, silent=true, buffer=bufnr }
             end
@@ -93,3 +137,8 @@ return {
         end,
     },
 }
+
+
+-- {
+--     "neovim/nvim-lspconfig",
+--   },

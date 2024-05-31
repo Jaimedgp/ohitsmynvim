@@ -19,29 +19,33 @@ return {
             local dapui = require("dapui")
             dapui.setup()
 
-            vim.api.nvim_set_hl(0, "DapBreakpoint", { ctermbg = 0, fg = "#E74C3C" })
+            vim.api.nvim_set_hl(0, "DapBreakpointNumber", { ctermbg = 0, bg = "#F44B39"})
+            vim.api.nvim_set_hl(0, "DapBreakpointIcon", { ctermbg = 0, bg = "#F44B39" })
+            vim.api.nvim_set_hl(0, "DapBreakpointLine", { underline = true })
             vim.api.nvim_set_hl(0, "DapLogPoint", { ctermbg = 0, fg = "#61cfef" })
+            vim.api.nvim_set_hl(0, "DapLogPointIcon", { ctermbg = 0, bg = "#61cfef" })
             vim.api.nvim_set_hl(0, "DapStopped", { ctermbg = 0, fg = "#98c379" })
+            vim.api.nvim_set_hl(0, "DapStoppedIcon", { ctermbg = 0, bg = "#98c379" })
 
             vim.fn.sign_define(
                 "DapBreakpoint",
-                { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpointLine", numhl = "DapBreakpointNumber" }
             )
             vim.fn.sign_define(
                 "DapBreakpointCondition",
-                { text = "󰟃", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+                { text = "󰟃", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
             )
             vim.fn.sign_define(
                 "DapBreakpointRejected",
-                { text = "", texthl = "DapBreakpoint", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
+                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
             )
             vim.fn.sign_define(
                 "DapLogPoint",
-                { text = "", texthl = "DapLogPoint", linehl = "DapLogPoint", numhl = "DapLogPoint" }
+                { text = "", texthl = "DapLogPointIcon", linehl = "DapLogPoint", numhl = "DapLogPoint" }
             )
             vim.fn.sign_define(
                 "DapStopped",
-                { text = "", texthl = "DapStopped", linehl = "DapStopped", numhl = "DapStopped" }
+                { text = "", texthl = "DapStoppedIcon", linehl = "DapStopped", numhl = "DapStopped" }
             )
 
             dap.listeners.before.attach.dapui_config = function()
