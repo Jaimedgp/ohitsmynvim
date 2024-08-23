@@ -9,11 +9,11 @@ return {
         underline = true,
         bold = true,
         italic = {
-            strings = true,
-            emphasis = true,
-            comments = true,
+            strings = false,
+            emphasis = false,
+            comments = false,
             operators = false,
-            folds = true,
+            folds = false,
         },
         -- strikethrough = true,
         -- invert_selection = false,
@@ -40,7 +40,7 @@ return {
             TabLineSel  = { bg = "#FFFFFF"},  -- { fg = colors.green, bg = colors.bg1, reverse = config.invert_tabline },
             TabLine     = { bg = "#FFFFFF" },  -- { link = "TabLineFill" },
 
-            -- GruvboxBg2 = { bg = "" },  -- Background of bottom no lines 
+            -- GruvboxBg2 = { bg = "" },  -- Background of bottom no lines
         },
         dim_inactive = true,
         transparent_mode = true,
