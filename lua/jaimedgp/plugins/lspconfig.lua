@@ -61,39 +61,6 @@ return {
         config = function(_, opts)
             local lspconfig = require("lspconfig")
 
-            vim.diagnostic.config({
-                virtual_text = {
-                    prefix = '', -- Could be '■', '▎', 'x' '●'
-                    format = function(diagnostic)
-                        -- local lines = vim.split(diagnostic.message, '\n')
-                        -- return lines[1]
-                        return "---"
-                    end,
-                },
-                update_in_insert = false,
-                underline = true,
-                severity_sort = true,
-                float = {
-                    focusable = false,
-                    style = "minimal",
-                    border = "rounded",
-                    source = "always",
-                    header = "",
-                    prefix = "",
-                },
-            })
-            local signs = {
-                Error = "",  -- " ", "■", "⠑"
-                Warn  = "",  -- " ", "■", "⠺"", "⌬ "
-                Hint  = "",  -- " ", "■", "⠓"
-                Info  = "",  -- " ", "■", "⠊"
-            }
-            vim.api.nvim_set_hl(0, "Noice", { fg = "#E74C3C" })
-            for type, icon in pairs(signs) do
-                local hl = "DiagnosticSign" .. type
-                vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = "Noice" })
-            end
-
             -- Show line diagnostics automatically in hover window
             vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
 
