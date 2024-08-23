@@ -51,7 +51,11 @@ return {
 
         require('ufo').setup({
             provider_selector = function(bufnr, filetype, buftype)
-                return { "lsp", "treesitter", "indent" }
+                return {
+                    "lsp",
+                    "treesitter",
+                    -- "indent",
+                }
             end,
             open_fold_hl_timeout = 150,
             fold_virt_text_handler = handler,
@@ -84,7 +88,7 @@ return {
             local winid = require('ufo').peekFoldedLinesUnderCursor()
             if not winid then
                 -- choose one of coc.nvim and nvim lsp
-                vim.fn.CocActionAsync('definitionHover') -- coc.nvim
+                -- vim.fn.CocActionAsync('definitionHover') -- coc.nvim
                 vim.lsp.buf.hover()
             end
         end)
