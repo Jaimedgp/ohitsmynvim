@@ -1,5 +1,18 @@
 local map=vim.keymap.set
 
+-- Navigate buffers|tabs|quickfix|loclist
+for k, v in pairs({
+  b = { cmd = "b", desc = "buffer" },
+  t = { cmd = "tab", desc = "tab" },
+  -- q = { cmd = "c", desc = "quickfix" },
+  -- l = { cmd = "l", desc = "location" },
+}) do
+  map("n", "[" .. k:lower(), "<cmd>" .. v.cmd .. "previous<CR>", { desc = "Previous " .. v.desc })
+  map("n", "]" .. k:lower(), "<cmd>" .. v.cmd .. "next<CR>", { desc = "Next " .. v.desc })
+  map("n", "[" .. k:upper(), "<cmd>" .. v.cmd .. "first<CR>", { desc = "First " .. v.desc })
+  map("n", "]" .. k:upper(), "<cmd>" .. v.cmd .. "last<CR>", { desc = "Last " .. v.desc })
+end
+
 -------------------------------------
 -- WINDOWS NAVIGATION
 -------------------------------------
