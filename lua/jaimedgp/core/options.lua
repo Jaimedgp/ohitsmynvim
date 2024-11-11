@@ -29,6 +29,9 @@ opt.cmdheight = 0
 opt.showmode = false            -- Don't show mode
 opt.conceallevel = 1
 
+opt.scrolloff = 10
+opt.sidescrolloff = 8
+
 -------------------------------------
 -- Tabs, indent
 -------------------------------------
@@ -40,10 +43,10 @@ opt.smartindent = true          -- Autoindent new lines
 opt.shiftround = true           -- Round the indentation to the nearest multiple of shiftwidth
 opt.smarttab = true             -- Insert “tabstop” number of spaces when the “tab” key is pressed.
 
-opt.foldmethod = "indent"       -- A
-opt.foldnestmax = 3             -- B
-opt.foldlevel = 1               -- C
-opt.foldenable = false          -- D
+-- opt.foldenable = true          -- D
+-- -- opt.foldmethod = "indent"       -- A
+-- opt.foldnestmax = 3             -- B
+-- opt.foldlevel = 1               -- C
 
 -------------------------------------
 -- Memory, CPU

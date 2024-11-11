@@ -2,6 +2,7 @@ return {
     "kevinhwang91/nvim-ufo",
     dependencies = "kevinhwang91/promise-async",
     config = function()
+        vim.o.markdown_folding = 1
         vim.o.foldcolumn = '0' -- '0' is not bad
         vim.o.foldlevel = 99 -- Using ufo provider need a large value, feel free to decrease the value
         vim.o.foldlevelstart = 99
@@ -53,9 +54,13 @@ return {
         end
 
         require('ufo').setup({
-            provider_selector = function(bufnr, filetype, buftype)
-                return { "lsp", }
-            end,
+            -- provider_selector = function(bufnr, filetype, buftype)
+            --     if filetype == 'markdown' then
+            --         return { 'treesitter' }
+            --     else
+            --         return { 'lsp' }
+            --     end
+            -- end,
             open_fold_hl_timeout = 150,
             fold_virt_text_handler = handler,
             close_fold_kinds_for_ft = {
@@ -82,7 +87,10 @@ return {
         vim.keymap.set('n', 'zr', require('ufo').openFoldsExceptKinds)
         vim.keymap.set('n', 'zm', require('ufo').closeFoldsWith) -- closeAllFolds == closeFoldsWith(0)
         vim.keymap.set('n', '+', 'zo')
+        vim.keymap.set('n', '++', 'zO') -- require('ufo').openAllFolds
+        vim.keymap.set('n', '+++', require('ufo').openAllFolds)
         vim.keymap.set('n', '-', 'zc')
+        vim.keymap.set('n', '--', require('ufo').closeAllFolds)
         vim.keymap.set('n', 'K', function()
             local winid = require('ufo').peekFoldedLinesUnderCursor()
             if not winid then
