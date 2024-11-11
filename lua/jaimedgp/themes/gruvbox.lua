@@ -31,7 +31,8 @@ return {
             -- LineNr       = { fg = "#62605f", bg = "#443F39" }, -- line numbers column foreground
             CursorLineNr = { fg = "#FE9C3A", bg = "#524B45" }, -- line numbers column foreground
 
-            Visual   = {                 bg = "#524B45" },  -- VISUAL Background color, default: #665C54
+            -- Visual   = {                 bg = "#524B45" },  -- VISUAL Background color, default: #665C54
+            Visual   = {                 bg = "#787869" },  -- VISUAL Background color, default: #665C54
             Comment  = { fg = "#A79A8C",                },  -- comments, defaults: #928374
             Function = { fg = "#90C5CF",                },  -- function name, defaults: #B8BB26
 
@@ -40,7 +41,7 @@ return {
             TabLineSel  = { bg = "#FFFFFF"},  -- { fg = colors.green, bg = colors.bg1, reverse = config.invert_tabline },
             TabLine     = { bg = "#FFFFFF" },  -- { link = "TabLineFill" },
 
-            -- GruvboxBg2 = { bg = "" },  -- Background of bottom no lines 
+            -- GruvboxBg2 = { bg = "" },  -- Background of bottom no lines
         },
         dim_inactive = true,
         transparent_mode = true,
