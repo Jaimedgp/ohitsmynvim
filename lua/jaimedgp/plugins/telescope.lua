@@ -1,11 +1,11 @@
 return {
 	{
 		"cljoly/telescope-repo.nvim",
-		config = function()
-			list = {
-				search_dirs = "~/projects",
-			}
-		end,
+		-- config = function()
+		-- 	list = {
+		-- 		search_dirs = "~/projects",
+		-- 	}
+		-- end,
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
@@ -32,10 +32,11 @@ return {
 			{ "<leader>fg", ":Telescope repo list<CR>", mode = "n" },
 			{ "<leader>fr", ":Telescope oldfiles<CR>", mode = "n" },
 			{ "<leader>ft", ":Telescope live_grep<CR>", mode = "n" },
-			{ "<leader>ff", ":Telescope file_browser<CR>", mode = "n" },
-			{ "<leader>fF", ":Telescope find_files<CR>", mode = "n" },
+			{ "<leader>fd", ":Telescope file_browser<CR>", mode = "n" },
+			{ "<leader>ff", ":Telescope find_files<CR>", mode = "n" },
 			{ "<leader>fc", ":Telescope neoclip<CR>", mode = "n" },
 			{ "<leader>fm", ":Telescope macros<CR>", mode = "n" },
+			{ "<leader>fb", ":Telescope buffers<CR>", mode = "n" },
             -- { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' },
 		},
 		config = function()
@@ -45,20 +46,10 @@ return {
 					-- config_key = value,
 					-- layout_strategy = "vertical",
 					theme = "dropdown",
-					layout_config = {
-						-- width = 0.7,
-						preview_width = 0.55,
-					},
+					layout_config = { preview_width = 120, },
 					mappings = {},
 				},
 				extensions = {
-					-- media_files = {
-					--     -- filetypes whitelist
-					--     -- defaults to {"png", "jpg", "mp4", "webm", "pdf"}
-					--     filetypes = {"png", "webp", "jpg", "jpeg"},
-					--     -- find command (defaults to `fd`)
-					--     find_cmd = "rg"
-					-- },
 					macros = {
 						prompt_title = "Macros de Jaimedgp",
 						num_registers = 22,
