@@ -11,34 +11,34 @@ return {
             require("mason-tool-installer").setup({
                 ensure_installed = {
                     -- LUA
-                    "lua_ls", -- LSP
-                    "stylua", -- formatting
-
-                    -- Python
+                    -- "lua_ls", -- LSP
+                    -- "stylua", -- formatting
+                    --
+                    -- -- Python
                     "pyright", -- LSP
-                    "black", -- formatting
-                    "ruff-lsp", -- LSP
+                    -- "black", -- formatting
+                    -- "ruff-lsp", -- LSP
                     "ruff", -- diagnostic
-                    "isort",
-                    "autopep8",
-                    "mypy",
-                    "pylint",
-
-                    -- R
-                    "r_language_server", -- LSP
-                    -- "format_r",  -- formatting
-                    -- "styler",  -- formatting
-
-                    -- Docker
-                    "dockerls", -- LSP
-                    "docker_compose_language_service", -- LSP
-
-                    -- Terminal
-                    "bashls", -- LSP
-
-                    -- Web Development
-                    "html", -- LSP
-                    "cssls", -- LSP
+                    -- "isort",
+                    -- "autopep8",
+                    -- "mypy",
+                    -- "pylint",
+                    --
+                    -- -- R
+                    -- "r_language_server", -- LSP
+                    -- -- "format_r",  -- formatting
+                    -- -- "styler",  -- formatting
+                    --
+                    -- -- Docker
+                    -- "dockerls", -- LSP
+                    -- "docker_compose_language_service", -- LSP
+                    --
+                    -- -- Terminal
+                    -- "bashls", -- LSP
+                    --
+                    -- -- Web Development
+                    -- "html", -- LSP
+                    -- "cssls", -- LSP
                 }
             })
         end,
