@@ -18,6 +18,7 @@ return {
                     "pyright", -- LSP
                     "black", -- formatting
                     "ruff-lsp", -- LSP
+                    -- "ruff_lsp", -- LSP
                     "ruff", -- diagnostic
                     "isort",
                     "autopep8",
@@ -25,7 +26,7 @@ return {
                     "pylint",
 
                     -- R
-                    "r_language_server", -- LSP
+                    -- "r_language_server", -- LSP
                     -- "format_r",  -- formatting
                     -- "styler",  -- formatting
 

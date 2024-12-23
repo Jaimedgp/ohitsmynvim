@@ -2,7 +2,16 @@ return {
     {
         "lewis6991/gitsigns.nvim",
         config = function()
+
             require("gitsigns").setup({
+                signs_staged = {
+                    change       = { text = "╏" },
+                    topdelete    = { text = "┅" },  -- "‾"
+                    delete       = { text = "▔" },  -- "_"
+                    add          = { text = "▍" },
+                    changedelete = { text = "~" },
+                    untracked    = { text = "┇" },
+                },
                 signs = {
                     change       = { text = "╏" },
                     topdelete    = { text = "┅" },  -- "‾"
@@ -11,6 +20,7 @@ return {
                     changedelete = { text = "~" },
                     untracked    = { text = "┇" },
                 },
+                signs_staged_enable = true,
                 signcolumn = true,  -- Toggle with `:Gitsigns toggle_signs`
                 numhl      = false, -- Toggle with `:Gitsigns toggle_numhl`
                 linehl     = false, -- Toggle with `:Gitsigns toggle_linehl`
@@ -65,12 +75,21 @@ return {
                     end, {expr=true})
 
                     -- Actions
-                    map('n', '<leader>ga', gs.stage_hunk)
+                    -- map('n', '<leader>ga', gs.stage_hunk)
                     map('n', '<leader>gA', gs.stage_buffer)
-                    map({'n', 'v'}, '<leader>g', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
+                    map({'n', 'v'}, '<leader>ga', function() gs.stage_hunk {vim.fn.line('.'), vim.fn.line('v')} end)
 
                     map('n', '<leader>gu', gs.undo_stage_hunk)
                     map('n', '<leader>gr', gs.reset_hunk)
+
+
+                    -- Set custom color for GitSignsAdd
+                    -- vim.api.nvim_set_hl(0, 'GitSignsStagedAdd', { fg ='#b8bb26', bg = '#7d7e61', bold = true })
+                    vim.api.nvim_set_hl(0, 'GitSignsStagedAdd', { fg ='#b8bb26', bg = '#95956e', bold = true })
+
+                    -- Optionally set other GitSigns highlights if needed
+                    vim.api.nvim_set_hl(0, 'GitSignsStagedChange', { fg = '#fe8019', bg = '#dcae88', bold = true })
+                    vim.api.nvim_set_hl(0, 'GitSignsStagedDelete', { fg = '#fb4934', bg = '#e5ada6', bold = true })
 
                     -- map('n', '<leader>gd', function() gs.blame_line{full=true} end)
                     map('n', '<leader>gd', gs.preview_hunk)

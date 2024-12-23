@@ -19,6 +19,7 @@ return {
 			"nvim-treesitter/nvim-treesitter-textobjects",
 			"JoosepAlviste/nvim-ts-context-commentstring",
 			"windwp/nvim-ts-autotag",
+            "nvim-treesitter/playground",
 		},
 		config = function()
 			-- import nvim-treesitter plugin

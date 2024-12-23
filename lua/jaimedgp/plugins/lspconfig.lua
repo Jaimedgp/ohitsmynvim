@@ -6,85 +6,10 @@ return {
             require("mason-lspconfig").setup()
         end,
     },
-    {
-        "neovim/nvim-lspconfig",
-        lazy = true,
-        opts = {
-            servers = {
-                ruff_lsp = {
-                    -- default_config = {
-                    --     cmd = { 'ruff-lsp' },
-                    --     filetypes = { 'python' },
-                    --     root_dir = lspconfig.util.find_git_ancestor,
-                    --     init_options = {
-                    --         settings = {
-                    --             args = {}
-                    --         }
-                    --     }
-                    -- }
-                },
-                pyright = {
-                    settings = {
-                        python = {
-                            analysis = {
-                                autoImportCompletions = true,
-                                typeCheckingMode = "on",
-                                autoSearchPaths = true,
-                                useLibraryCodeForTypes = true,
-                                diagnosticMode = "workspace", -- "openFilesOnly",
-                            },
-                        },
-                    },
-                },
-            },
-            setup = {
-                pyright = function(_, _)
-                    local lsp_utils = require "base.lsp.utils"
-                    lsp_utils.on_attach(function(client, bufnr)
-                        local map = function(mode, lhs, rhs, desc)
-                            if desc then
-                                desc = desc
-                            end
-                            vim.keymap.set(mode, lhs, rhs, { silent = true, desc = desc, buffer = bufnr, noremap = true })
-                        end
-                        -- stylua: ignore
-                        if client.name == "pyright" then
-                            map("n", "<leader>lo", "<cmd>PyrightOrganizeImports<cr>",  "Organize Imports" )
-                            map("n", "<leader>lC", function() require("dap-python").test_class() end,  "Debug Class" )
-                            map("n", "<leader>lM", function() require("dap-python").test_method() end,  "Debug Method" )
-                            map("v", "<leader>lE", function() require("dap-python").debug_selection() end, "Debug Selection" )
-                        end
-                    end)
-                end,
-            },
-        },
-        config = function(_, opts)
-            local lspconfig = require("lspconfig")
-
-            lspconfig.ruff_lsp.setup({})
-            lspconfig.markdown_oxide.setup({
-                filetypes = { "markdown" },
-                root_dir = lspconfig.util.root_pattern(".git", "."),
-                settings = {
-                    markdown = {
-                        lint = true,      -- Enable linting
-                        format = true,    -- Enable formatting
-                        validate = true,  -- Enable validation/syntax checking
-                    },
-                },
-            })
-            lspconfig.pyright.setup({})
-            lspconfig.lua_ls.setup({})
-            -- lspconfig.r_language_server.setup({})
-            lspconfig.dockerls.setup({})
-            lspconfig.docker_compose_language_service.setup({})
-            lspconfig.bashls.setup({})
-            lspconfig.html.setup({})
-
-            -- Show line diagnostics automatically in hover window
-            vim.cmd [[autocmd CursorHold,CursorHoldI * lua vim.diagnostic.open_float(nil, {focus=false})]]
-        end,
-    },
+    -- {
+    --     "neovim/nvim-lspconfig",
+    --     lazy = true,
+    -- },
     {
         "VonHeikemen/lsp-zero.nvim",
         branch = "v2.x",
@@ -98,6 +23,22 @@ return {
         },
         config = function()
             local lsp = require("lsp-zero")
+            local capabilities = require("cmp_nvim_lsp").default_capabilities()
+
+            lsp.configure('pyright', {
+                settings = {
+                    pyright = {disableOrganizeImports = true,},
+                    python = {
+                        analysis = {
+                            ignore = {"*"},
+                        },
+                    },
+                },
+            })
+
+            lsp.configure('ruff', {
+                capabilities = capabilities,
+            })
 
             lsp.on_attach(function(client, bufnr)
                 local opts = { buffer = bufnr, remap = false }
@@ -172,13 +113,14 @@ return {
                 -- )
             end)
 
-            handlers = {
+            local handlers = {
                 lsp.default_setup,
                 lua_ls = function()
                     local lua_opts = lsp.nvim_lua_ls()
                     require("lspconfig").lua_ls.setup(lua_opts)
                 end,
             }
+            lsp.setup()
         end,
     }
 }

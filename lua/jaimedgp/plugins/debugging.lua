@@ -1,22 +1,16 @@
 return {
     {
         "mfussenegger/nvim-dap",
-        lazy = true,
+        lazy = false,
         dependencies = {
             "rcarriga/nvim-dap-ui",
             "nvim-neotest/nvim-nio",
             "mfussenegger/nvim-dap-python",
         },
-        keys = {
-            { "<Leader>db", ":DapToggleBreakpoint<CR>", mode = "n" },
-            { "<Leader>dc", ":DapContinue<CR>",         mode = "n" },
-            { "<Leader>ds", ":DapTerminate<CR>",        mode = "n" },
-        },
         config = function()
             local dap = require("dap")
-
-            -- Dap-UI
             local dapui = require("dapui")
+            local dap_python = require("dap-python")
             dapui.setup()
 
             vim.api.nvim_set_hl(0, "DapBreakpointNumber", { ctermbg = 0, bg = "#F44B39"})
@@ -29,24 +23,19 @@ return {
 
             vim.fn.sign_define(
                 "DapBreakpoint",
-                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpointLine", numhl = "DapBreakpointNumber" }
-            )
+                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpointLine", numhl = "DapBreakpointNumber" })
             vim.fn.sign_define(
                 "DapBreakpointCondition",
-                { text = "󰟃", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-            )
+                { text = "󰟃", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
             vim.fn.sign_define(
                 "DapBreakpointRejected",
-                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" }
-            )
+                { text = "", texthl = "DapBreakpointIcon", linehl = "DapBreakpoint", numhl = "DapBreakpoint" })
             vim.fn.sign_define(
                 "DapLogPoint",
-                { text = "", texthl = "DapLogPointIcon", linehl = "DapLogPoint", numhl = "DapLogPoint" }
-            )
+                { text = "", texthl = "DapLogPointIcon", linehl = "DapLogPoint", numhl = "DapLogPoint" })
             vim.fn.sign_define(
                 "DapStopped",
-                { text = "", texthl = "DapStoppedIcon", linehl = "DapStopped", numhl = "DapStopped" }
-            )
+                { text = "", texthl = "DapStoppedIcon", linehl = "DapStopped", numhl = "DapStopped" })
 
             dap.listeners.before.attach.dapui_config = function()
                 dapui.open()
@@ -61,11 +50,18 @@ return {
                 dapui.close()
             end
 
-            -- Python debugger
-            local dappython = require("dap-python")
+            dap_python.setup("python")
+            -- dap_python.setup("~/.config/.virtualenvs/debugpy/bin/python")
+            dap_python.test_runner = "pytest"
 
-            dappython.setup("~/.config/.virtualenvs/debugpy/bin/python")
-            dappython.test_runner = "pytest"
+            vim.keymap.set("n", "<leader>dc", function() dap.continue() end, { desc = "Debug Continue" })
+            vim.keymap.set("n", "<leader>ds", function() dap.close() end, { desc = "Debug Continue" })
+            vim.keymap.set("n", "<leader>db", function() dap.toggle_breakpoint() end, { desc = "Toggle Breakpoint" })
+
+            vim.keymap.set("n", "<Leader>du", function() dapui.toggle() end, { desc = "Toggle DAP UI" })
+
+            vim.keymap.set("n", "<leader>df", function() dap_python.test_method() end, { desc = "Debug Continue" })
+            vim.keymap.set("n", "<leader>dC", function() dap_python.test_class() end, { desc = "Debug Continue" })
         end,
     },
 }

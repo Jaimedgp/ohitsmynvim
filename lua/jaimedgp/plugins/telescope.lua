@@ -9,7 +9,8 @@ return {
 	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		build = "cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release && cmake --install build --prefix build",
+        -- build = 'cmake -S. -Bbuild -DCMAKE_BUILD_TYPE=Release && cmake --build build --config Release'
+        build = 'make'
 	},
 	{
 		"nvim-telescope/telescope-file-browser.nvim",
@@ -24,6 +25,7 @@ return {
 			"nvim-telescope/telescope-project.nvim",
 			"cljoly/telescope-repo.nvim",
 			"1riz/telescope-macros.nvim",
+            "nvim-telescope/telescope-fzf-native.nvim",
             -- "jonarrien/telescope-cmdline.nvim",
 			-- "nvim-telescope/telescope-media-files.nvim"
 		},
@@ -46,7 +48,7 @@ return {
 					-- config_key = value,
 					-- layout_strategy = "vertical",
 					theme = "dropdown",
-					layout_config = { preview_width = 120, },
+					layout_config = { preview_width = 0.5, },
 					mappings = {},
 				},
 				extensions = {
