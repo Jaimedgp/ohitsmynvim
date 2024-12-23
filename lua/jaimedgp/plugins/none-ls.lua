@@ -6,15 +6,20 @@ return {
 
             null_ls.setup({
                 sources = {
-                    -- null_ls.builtins.formatting.stylua,
-                    -- null_ls.builtins.formatting.isort,
-                    -- null_ls.builtins.formatting.black,
-                    -- null_ls.builtins.formatting.ruff,
-                    -- null_ls.builtins.formatting.autopep8,
-                    --
-                    -- null_ls.builtins.diagnostics.ruff_lsp,
-                    -- null_ls.builtins.diagnostics.mypy,
-                    -- null_ls.builtins.diagnostics.pylint
+                    null_ls.builtins.formatting.ruff,
+                    null_ls.builtins.diagnostics.ruff,
+
+                    null_ls.builtins.formatting.stylua,
+                    null_ls.builtins.diagnostics.lua_ls,
+
+                    null_ls.builtins.diagnostics.r_language_server,
+
+                    null_ls.builtins.diagnostics.dockerls,
+                    null_ls.builtins.diagnostics.docker_compose_language_service,
+
+                    null_ls.builtins.diagnostics.bashls,
+                    null_ls.builtins.diagnostics.html,
+                    null_ls.builtins.diagnostics.cssls,
                 }
             })
 

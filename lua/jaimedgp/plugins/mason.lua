@@ -16,19 +16,12 @@ return {
 
                     -- Python
                     "pyright", -- LSP
-                    "black", -- formatting
-                    "ruff-lsp", -- LSP
-                    -- "ruff_lsp", -- LSP
                     "ruff", -- diagnostic
-                    "isort",
-                    "autopep8",
-                    "mypy",
-                    "pylint",
 
                     -- R
-                    -- "r_language_server", -- LSP
-                    -- "format_r",  -- formatting
-                    -- "styler",  -- formatting
+                    "r_language_server", -- LSP
+                    -- -- "format_r",  -- formatting
+                    -- -- "styler",  -- formatting
 
                     -- Docker
                     "dockerls", -- LSP
@@ -37,7 +30,7 @@ return {
                     -- Terminal
                     "bashls", -- LSP
 
-                    -- Web Development
+                    -- -- Web Development
                     "html", -- LSP
                     "cssls", -- LSP
                 }
