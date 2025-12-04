@@ -11,6 +11,18 @@ return {
             local dap = require("dap")
             local dapui = require("dapui")
             local dap_python = require("dap-python")
+            local mason_path = vim.fn.glob(vim.fn.stdpath("data") .. "/mason/")
+            dap_python.setup(mason_path .. "packages/debugpy/venv/bin/python")
+            table.insert(require('dap').configurations.python, {
+                type = 'python',
+                request = 'launch',
+                name = 'Launch file with arguments',
+                program = '${file}',
+                args = function()
+                    local args_string = vim.fn.input('Arguments: ')
+                    return vim.split(args_string, " +")
+                end,
+            })
             dapui.setup()
 
             vim.api.nvim_set_hl(0, "DapBreakpointNumber", { ctermbg = 0, bg = "#F44B39"})
@@ -43,12 +55,12 @@ return {
             dap.listeners.before.launch.dapui_config = function()
                 dapui.open()
             end
-            dap.listeners.before.event_terminated.dapui_config = function()
-                dapui.close()
-            end
-            dap.listeners.before.event_exited.dapui_config = function()
-                dapui.close()
-            end
+            -- dap.listeners.before.event_terminated.dapui_config = function()
+            --     dapui.close()
+            -- end
+            -- dap.listeners.before.event_exited.dapui_config = function()
+            --     dapui.close()
+            -- end
 
             dap_python.setup("python")
             -- dap_python.setup("~/.config/.virtualenvs/debugpy/bin/python")
@@ -62,6 +74,9 @@ return {
 
             vim.keymap.set("n", "<leader>df", function() dap_python.test_method() end, { desc = "Debug Continue" })
             vim.keymap.set("n", "<leader>dC", function() dap_python.test_class() end, { desc = "Debug Continue" })
+            vim.keymap.set("n", "<leader>do", function() dap.step_over() end, { desc = "Step Over" })
+            vim.keymap.set("n", "<leader>di", function() dap.step_into() end, { desc = "Step Into" })
+            vim.keymap.set("n", "<leader>dO", function() dap.step_out() end, { desc = "Step Out" })
         end,
     },
 }

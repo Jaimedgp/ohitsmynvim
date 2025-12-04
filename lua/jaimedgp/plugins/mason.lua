@@ -1,8 +1,15 @@
-return {
+ return {
     {
-        "williamboman/mason.nvim",
+        "mason-org/mason.nvim",
+        opts = {}
+    },
+    {
+        "williamboman/mason-lspconfig.nvim",
+        lazy = false,
+        enable = true,
+        dependencies = {"mason-org/mason.nvim"},
         config = function()
-            require("mason").setup()
+            require("mason-lspconfig").setup()
         end,
     },
     {
@@ -17,6 +24,7 @@ return {
                     -- Python
                     "pyright", -- LSP
                     "ruff", -- diagnostic
+                    "debugpy",
 
                     -- R
                     "r_language_server", -- LSP

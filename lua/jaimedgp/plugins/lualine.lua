@@ -77,9 +77,9 @@ return {
             },
             sections = {
                 lualine_a = { function ()
-                    return mode_names[vim.api.nvim_get_mode().mode] or "__" 
+                    return mode_names[vim.api.nvim_get_mode().mode] or "__"
                 end},
-                lualine_b = { 
+                lualine_b = {
                     {
                         "filename",
                         file_status = true,      -- Displays file status (readonly status, modified status)
@@ -96,10 +96,10 @@ return {
                             modified = '+',      -- Text to show when the file is modified.
                             readonly = '-',      -- Text to show when the file is non-modifiable or readonly.
                             unnamed = '...',     -- Text to show for unnamed buffers.
-                            newfile = '*',       -- Text to show for newly created file before first write, "filetype" 
+                            newfile = '*',       -- Text to show for newly created file before first write, "filetype"
                         },
                     },
-                    "branch" 
+                    "branch"
                 },
                 lualine_c = { "diff", },
                 lualine_x = { "filetype", },
@@ -127,7 +127,7 @@ return {
                     update_in_insert = false,  -- Update diagnostics in insert mode.
                     always_visible = false,    -- Show diagnostics even if there are none.
                     } },
-                lualine_z = { "progress", "location" },
+                lualine_z = { "progress", "location", require("opencode").statusline },
             },
             tabline = {},
             extensions = {

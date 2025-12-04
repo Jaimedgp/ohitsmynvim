@@ -11,7 +11,7 @@ opt.mouse = "n"     		    -- Enable mouse mode
 opt.undofile = true     		-- Save undo history
 opt.ignorecase = true   		-- Case insensitive searching unless /C or capital in search
 opt.smartcase = true    		-- Smart case
-opt.clipboard = "unnamedplus" 	-- Access system clipboard
+opt.clipboard = "unnamed" 	-- Access system clipboard
 opt.updatetime = 150    		-- Decrease update time
 opt.timeoutlen = 400            -- Time to wait when key is press. e.g.: <leader> key
 

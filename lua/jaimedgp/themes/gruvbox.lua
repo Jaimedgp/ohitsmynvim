@@ -89,7 +89,7 @@ return {
 
             -- GruvboxBg2 = { bg = "" },  -- Background of bottom no lines
         },
-        dim_inactive = true,
+        dim_inactive = false,
         transparent_mode = true,
     },
 }

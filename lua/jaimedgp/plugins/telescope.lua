@@ -18,7 +18,7 @@ return {
 	},
 	{
 		"nvim-telescope/telescope.nvim",
-		tag = "0.1.5",
+		tag = "0.2.0",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-lua/popup.nvim",
@@ -30,16 +30,16 @@ return {
 			-- "nvim-telescope/telescope-media-files.nvim"
 		},
 		keys = {
-			{ "<leader>f", ":Telescope<CR>", mode = "n" },
-			{ "<leader>fg", ":Telescope repo list<CR>", mode = "n" },
-			{ "<leader>fr", ":Telescope oldfiles<CR>", mode = "n" },
-			{ "<leader>ft", ":Telescope live_grep<CR>", mode = "n" },
-			{ "<leader>fd", ":Telescope file_browser<CR>", mode = "n" },
-			{ "<leader>ff", ":Telescope find_files<CR>", mode = "n" },
-			{ "<leader>fc", ":Telescope neoclip<CR>", mode = "n" },
-			{ "<leader>fm", ":Telescope macros<CR>", mode = "n" },
-			{ "<leader>fb", ":Telescope buffers<CR>", mode = "n" },
-            -- { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' },
+            { "<leader>f" , ":Telescope<CR>", desc = "Telescope Builtin", mode = "n" },
+			{ "<leader>fg", ":Telescope repo list<CR>", desc = "Repo List", mode = "n" },
+			{ "<leader>fr", ":Telescope oldfiles<CR>", desc = "Recent Files", mode = "n" },
+			{ "<leader>ft", ":Telescope live_grep<CR>", desc = "Live Grep", mode = "n" },
+			{ "<leader>fd", ":Telescope file_browser<CR>", desc = "File Browser", mode = "n" },
+			{ "<leader>ff", ":Telescope find_files<CR>", desc = "Find Files", mode = "n" },
+			{ "<leader>fc", ":Telescope neoclip<CR>", desc = "Clipboard History", mode = "n" },
+			{ "<leader>fm", ":Telescope macros<CR>", desc = "Macros", mode = "n" },
+			{ "<leader>fb", ":Telescope buffers<CR>", desc = "Buffers", mode = "n" },
+			-- { ':', '<cmd>Telescope cmdline<cr>', desc = 'Cmdline' },
 		},
 		config = function()
 			require("telescope").setup({
@@ -100,6 +100,7 @@ return {
 				},
 			})
 			require("telescope").load_extension("fzf")
+			require("telescope").load_extension("neoclip")
 			require("telescope").load_extension("file_browser")
 			require("telescope").load_extension("project")
 			require("telescope").load_extension("repo")
