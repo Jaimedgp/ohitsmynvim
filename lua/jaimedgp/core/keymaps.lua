@@ -48,4 +48,30 @@ map("n", "N", "Nzz", default_opts)
 map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Show diagnostics
-map("n", "<leader>i", ":lua vim.diagnostic.open_float(nil, {focus=false, scope='cursor'})<CR>", default_opts)
+-- map("n", "<leader>i", ":lua vim.diagnostic.open_float(nil, {})<CR>", {})
+
+-------------------------------------
+-- LSP KEYMAPS
+-------------------------------------
+
+local opts = { noremap = true, silent = true }
+local lsp = vim.lsp.buf
+
+-- Go to Definition
+map('n', 'gd',
+    function()
+        vim.cmd("vsplit")
+        lsp.definition()
+    end, opts
+)
+-- Go to References
+map("n", "gr",
+    function() require("telescope.builtin").lsp_references() end,
+    vim.tbl_deep_extend("force", opts, { desc = "LSP Goto Reference" })
+)
+
+-- Go to Declaration
+-- map('n', 'gD', lsp.declaration, opts)
+-- Other useful LSP keymaps
+-- map('n', 'K', lsp.hover, opts)          -- Show hover documentation
+-- map('n', 'gi', lsp.implementation, opts) -- Go to Implementation(s)

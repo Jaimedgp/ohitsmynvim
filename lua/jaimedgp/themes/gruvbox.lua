@@ -4,7 +4,7 @@ return {
     priority = 500,
     config = true,
     opts = {
-        terminal_colors = true, -- add neovim terminal colors
+        terminal_colors = false, -- add neovim terminal colors
         undercurl = true,
         underline = true,
         bold = true,
@@ -21,10 +21,11 @@ return {
         -- invert_tabline = true,
         -- invert_intend_guides = false,
         -- inverse = true, -- invert background for search, diffs, statuslines and errors
-        contrast = "hard", -- can be "hard", "soft" or empty string
+        contrast = "soft", -- can be "hard", "soft" or empty string
         palette_overrides = {
         },
         overrides = {
+
             -- General
             -- -------------------------------------------------
             -- SignColumn  = {fg = ""                         },  -- line numbers column background
@@ -41,12 +42,34 @@ return {
             TabLine        = { bg = "#FFFFFF" },
             MiniTabLineCurrent = { bg = "#FFFFFF" },
 
+
             -- Diagnostic Underlines
             -- -------------------------------------------------
-            DiagnosticUnderlineError = { underline = true, undercurl = false },
-            DiagnosticUnderlineWarn  = { underline = true, undercurl = false },
-            DiagnosticUnderlineHint  = { underline = true, undercurl = false },
-            DiagnosticUnderlineInfo  = { underline = true, undercurl = false },
+            DiagnosticUnderlineError    = { underline = true, undercurl = false },
+            DiagnosticSignError         = { fg = "#F77979", bg = nil, bold = false, italic = true },  -- Sign in number column
+            DiagnosticFloatingError     = { fg = "#F77979", bg = nil, bold = false, italic = true },  -- Floating window
+            DiagnosticVirtualLinesError = { fg = "#F77979", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualTextError  = { fg = "#F77979", bg = nil, bold = false, italic = true },  -- Virtual text
+
+            -- DiagnosticUnderlineWarn  = { underline = true, undercurl = false },
+            DiagnosticUnderlineWarn    = { bold = true, underline = false, undercurl = false },
+            DiagnosticSignWarn         = { fg = "#FFBE59", bg = nil, bold = false, italic = true },
+            DiagnosticFloatingWarn     = { fg = "#FFBE59", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualLinesWarn = { fg = "#FFBE59", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualTextWarn  = { fg = "#FFBE59", bg = nil, bold = false, italic = true },
+
+            DiagnosticUnderlineInfo    = { underline = true, undercurl = false },
+            DiagnosticSignInfo         = { fg = "#90C5CF", bg = nil, bold = false, italic = true },
+            DiagnosticFloatingInfo     = { fg = "#90C5CF", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualLinesInfo = { fg = "#90C5CF", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualTextInfo  = { fg = "#90C5CF", bg = nil, bold = false, italic = true },
+
+            DiagnosticUnderlineHint    = { underline = true, undercurl = false },
+            DiagnosticSignHint         = { fg = "#A79A8C", bg = nil, bold = false, italic = true },
+            DiagnosticFloatingHint     = { fg = "#A79A8C", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualLinesHint = { fg = "#A79A8C", bg = nil, bold = false, italic = true },
+            DiagnosticVirtualTextHint  = { fg = "#A79A8C", bg = nil, bold = false, italic = true },
+
 
             -- Markdown
             -- -------------------------------------------------

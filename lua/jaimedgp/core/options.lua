@@ -11,7 +11,7 @@ opt.mouse = "n"     		    -- Enable mouse mode
 opt.undofile = true     		-- Save undo history
 opt.ignorecase = true   		-- Case insensitive searching unless /C or capital in search
 opt.smartcase = true    		-- Smart case
-opt.clipboard = "unnamed" 	-- Access system clipboard
+opt.clipboard = "unnamedplus" 	    -- Access system clipboard
 opt.updatetime = 150    		-- Decrease update time
 opt.timeoutlen = 400            -- Time to wait when key is press. e.g.: <leader> key
 
@@ -56,3 +56,4 @@ opt.history = 100               -- Remember N lines in history
 opt.lazyredraw = false          -- Faster scrolling
 opt.synmaxcol = 240             -- Max column for syntax highlight
 opt.updatetime = 250            -- ms to wait for trigger an event
+
