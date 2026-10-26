@@ -12,6 +12,17 @@ opt.undofile = true     		-- Save undo history
 opt.ignorecase = true   		-- Case insensitive searching unless /C or capital in search
 opt.smartcase = true    		-- Smart case
 opt.clipboard = "unnamedplus" 	    -- Access system clipboard
+vim.g.clipboard = {
+  name = 'OSC 52',
+  copy = {
+    ['+'] = require('vim.ui.clipboard.osc52').copy,
+    ['*'] = require('vim.ui.clipboard.osc52').copy,
+  },
+  paste = {
+    ['+'] = require('vim.ui.clipboard.osc52').paste,
+    ['*'] = require('vim.ui.clipboard.osc52').paste,
+  },
+}
 opt.updatetime = 150    		-- Decrease update time
 opt.timeoutlen = 400            -- Time to wait when key is press. e.g.: <leader> key
 
@@ -31,6 +42,8 @@ opt.conceallevel = 1
 
 opt.scrolloff = 10
 opt.sidescrolloff = 8
+
+opt.signcolumn = "yes:3"
 
 -------------------------------------
 -- Tabs, indent

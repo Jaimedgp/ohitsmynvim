@@ -31,6 +31,22 @@ map("n", '<C-Left>',  ':vertical resize -5<CR>')
 map("n", '<C-Up>',    ':resize +5<CR>')
 map("n", '<C-Down>',  ':resize -5<CR>')
 
+map("n", '<leader>=', function ()
+    vim.cmd('wincmd = ')
+    vim.t.maximized = false
+end, {})
+
+map("n", '<leader>*', function ()
+    if vim.t.maximized then
+        vim.cmd('wincmd =')
+        vim.t.maximized = false
+    else
+        vim.cmd('wincmd _')
+        vim.cmd('wincmd |')
+        vim.t.maximized = true
+    end
+end, {})
+
 -------------------------------------
 -- ADD BLANK LINES
 -------------------------------------
@@ -49,6 +65,13 @@ map("n", "<ESC>", ":nohlsearch<Bar>:echo<CR>", default_opts)
 
 -- Show diagnostics
 -- map("n", "<leader>i", ":lua vim.diagnostic.open_float(nil, {})<CR>", {})
+map("n", "<leader>k", function ()
+    if vim.g.jaimedgp_toggle_diagnostics_mode then
+        vim.g.jaimedgp_toggle_diagnostics_mode()
+    else
+        print("Error from jaimedgp code")
+    end
+end, {})
 
 -------------------------------------
 -- LSP KEYMAPS
@@ -62,6 +85,7 @@ map('n', 'gd',
     function()
         vim.cmd("vsplit")
         lsp.definition()
+        vim.cmd("normal! zz")
     end, opts
 )
 -- Go to References
